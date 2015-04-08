@@ -1,0 +1,15 @@
+{
+  "name": "messenger",
+  "version": "0.1.0",
+  "description": "Unofficial Facebook Messenger for Mac",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marekhrabe/messenger"
+  },
+  "bugs": {
+    "url": "https://github.com/marekhrabe/messenger/issues"
+  },
+  "author": "Marek Hrabe <marekhrabe@abdoc.net> (https://github.com/marekhrabe)",
+  "license": "MIT"
+}
