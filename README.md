@@ -8,4 +8,10 @@ MIT licensed, [Electron (formerly atom-shell)](https://github.com/atom/atom-shel
 
 # Download
 
-[Download Now for Mac](https://github.com/marekhrabe/messenger/releases)
+#### [Download Now for Mac](https://github.com/marekhrabe/messenger/releases)
+
+# Desktop notifications
+
+Go to Settings in Messenger and turn them on. They should just work
+
+![](https://upx.cz/23K)
