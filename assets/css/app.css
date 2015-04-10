@@ -1,0 +1,121 @@
+/* General styling */
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-transform: translate3d(0, 0px, 0px);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	background: transparent;
+	-webkit-border-radius: 2px; 
+}
+
+body {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border-radius: 4px;
+	z-index: 1;
+	cursor: default;
+	overflow: hidden;
+}
+
+input, textarea, select {
+	/*-webkit-app-region: no-drag;*/
+}
+
+/* Top bar */
+#top-bar {
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+	padding: 8px;
+	height: 32px;
+	width: 100%;
+	-webkit-app-region: drag;
+}
+
+/* Action buttons */
+#window-btns {
+	-webkit-app-region: no-drag!important;
+	-webkit-transform: translate3d(-60px, 0px, 0px);
+	display: inline-block;
+	z-index: 2;
+}
+
+#window-btns .btn {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	text-align: center;
+	border-radius: 6px;
+}
+
+#window-btns .btn + .btn {
+	margin-left: 5px;
+}
+
+#window-btns .btn i {
+	display: block;
+	visibility: hidden;
+}
+
+#window-btns .btn:hover i {
+	visibility: visible;
+}
+
+#btn-close {
+	background: #ed6555;
+}
+
+#btn-close i {
+	width: 6px;
+	height: 6px;
+	margin: 3px auto 0;
+	background-color: #b61402;
+	border-radius: 3px;
+}
+
+#btn-minimize {
+	background: #f4b860;
+}
+
+#btn-minimize i {
+	width: 6px;
+	height: 2px;
+	margin: 5px auto 0;
+	background-color: #ca8117;
+}
+
+/* Window Title */
+#title {
+	position: absolute;
+	top: 8px;
+	font: 14px/18px Helvetica, Arial, sans-serif;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: -1;
+	-webkit-transform: translate3d(0px, -60px, 0px);
+}
+
+/* Loading animations */
+.ready #top-bar {
+	-webkit-transition: border-bottom-color 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+.ready #window-btns,
+.ready #title {
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	-webkit-transition: -webkit-transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
+}
+
+/* Messenger area */
+#messenger {
+	width: 800px;
+	height: 612px;
+	display: inline-block;
+	margin: 0;
+	z-index: 2;
+}
