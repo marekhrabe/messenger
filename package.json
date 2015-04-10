@@ -12,5 +12,8 @@
   },
   "author": "Marek Hrabe <marekhrabe@abdoc.net> (https://github.com/marekhrabe)",
   "license": "MIT",
-  "atomShellVersion": "0.22.3"
+  "atomShellVersion": "0.22.3",
+  "devDependencies": {
+    "lodash": "^3.6.0"
+  }
 }
