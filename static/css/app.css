@@ -1,0 +1,107 @@
+/* General styling */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	overflow: hidden;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	cursor: default;
+}
+
+/* Top bar */
+#top-bar {
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+	padding: 8px;
+	height: 32px;
+	width: 100%;
+	-webkit-app-region: drag;
+	text-align: center;
+}
+
+/* Action buttons */
+#window-btns {
+	-webkit-transform: translate3d(-60px, 0px, 0px);
+	display: inline-block;
+	position: absolute;
+	top: 8px;
+	left: 10px;
+	z-index: 2;
+}
+
+#window-btns .btn {
+	-webkit-app-region: no-drag!important;
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	text-align: center;
+	border-radius: 6px;
+}
+
+#window-btns .btn + .btn {
+	margin-left: 5px;
+}
+
+#window-btns .btn i {
+	-webkit-transition: opacity cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+	display: block;
+	opacity: 0;
+}
+
+#window-btns .btn:hover i {
+	opacity: 1;
+}
+
+#btn-close {
+	background: #ed6555;
+}
+
+#btn-close i {
+	width: 6px;
+	height: 6px;
+	margin: 3px auto 0;
+	background-color: #b61402;
+	border-radius: 3px;
+}
+
+#btn-minimize {
+	background: #f4b860;
+}
+
+#btn-minimize i {
+	width: 6px;
+	height: 2px;
+	margin: 5px auto 0;
+	background-color: #ca8117;
+}
+
+/* Window Title */
+#title {
+	font: 14px/18px Helvetica, Arial, sans-serif;
+	z-index: -1;
+	-webkit-transform: translate3d(0px, -60px, 0px);
+}
+
+/* Loading animations */
+.ready #top-bar {
+	-webkit-transition: border-bottom-color 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+.ready #window-btns,
+.ready #title {
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	-webkit-transition: -webkit-transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
+}
+
+/* Messenger area */
+#messenger {
+	width: 800px;
+	height: 612px;
+	display: inline-block;
+	margin: 0;
+	z-index: 2;
+}

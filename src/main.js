@@ -1,21 +1,38 @@
-var app = require('app')
-var BrowserWindow = require('browser-window')
+var app = require('app');
+var ipc = require('ipc');
+var BrowserWindow = require('browser-window');
+var path = require('path');
 
-var mainWindow = null
+var staticPath = path.join(__dirname, '..', 'static');
 
+var mainWindow = null;
+
+// App
 app.on('ready', function () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
+    resizable: false,
+    'web-preferences': {
+      plugins: true
+    },
     'accept-first-mouse': true,
-    'node-integration': false,
-    title: 'Loading',
-  })
+    title: 'Loading'
+  });
 
-  mainWindow.loadUrl('https://www.messenger.com')
+  mainWindow.loadUrl('file://' + staticPath + '/app.html');
+});
 
-  mainWindow.on('closed', function () {
-    mainWindow = null
-    app.quit()
-  })
-})
+// API
+ipc.on('do-native-action', function(event, action) {
+  switch (action) {
+    case 'quit':
+      app.quit();
+      break;
+
+    case 'minimize':
+      mainWindow.minimize();
+      break;
+  }
+});
