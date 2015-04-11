@@ -2,28 +2,14 @@
 * {
 	padding: 0;
 	margin: 0;
-	-webkit-transform: translate3d(0, 0px, 0px);
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-html {
-	background: transparent;
-	-webkit-border-radius: 2px; 
-}
-
 body {
-	display: block;
-	margin: 0;
-	padding: 0;
-	border-radius: 4px;
-	z-index: 1;
-	cursor: default;
 	overflow: hidden;
-}
-
-input, textarea, select {
-	/*-webkit-app-region: no-drag;*/
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	cursor: default;
 }
 
 /* Top bar */
@@ -33,17 +19,21 @@ input, textarea, select {
 	height: 32px;
 	width: 100%;
 	-webkit-app-region: drag;
+	text-align: center;
 }
 
 /* Action buttons */
 #window-btns {
-	-webkit-app-region: no-drag!important;
 	-webkit-transform: translate3d(-60px, 0px, 0px);
 	display: inline-block;
+	position: absolute;
+	top: 8px;
+	left: 10px;
 	z-index: 2;
 }
 
 #window-btns .btn {
+	-webkit-app-region: no-drag!important;
 	display: inline-block;
 	width: 12px;
 	height: 12px;
@@ -56,12 +46,13 @@ input, textarea, select {
 }
 
 #window-btns .btn i {
+	-webkit-transition: opacity cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
 	display: block;
-	visibility: hidden;
+	opacity: 0;
 }
 
 #window-btns .btn:hover i {
-	visibility: visible;
+	opacity: 1;
 }
 
 #btn-close {
@@ -89,12 +80,7 @@ input, textarea, select {
 
 /* Window Title */
 #title {
-	position: absolute;
-	top: 8px;
 	font: 14px/18px Helvetica, Arial, sans-serif;
-	left: 0;
-	right: 0;
-	text-align: center;
 	z-index: -1;
 	-webkit-transform: translate3d(0px, -60px, 0px);
 }

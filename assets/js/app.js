@@ -1,5 +1,6 @@
 // Action sender
 var ipc = require('ipc');
+var shell = require('shell');
 var remote = require('remote');
 var Menu = remote.require('menu');
 var MenuItem = remote.require('menu-item');
@@ -12,11 +13,13 @@ var doAction = function(action) {
 var btn_close = document.getElementById('btn-close');
 var btn_minimize = document.getElementById('btn-minimize');
 
-btn_close.addEventListener('click', function() {
+btn_close.addEventListener('click', function(e) {
+	e.preventDefault();
 	doAction('quit');
 }, false);
 
-btn_minimize.addEventListener('click', function() {
+btn_minimize.addEventListener('click', function(e) {
+	e.preventDefault();
 	doAction('minimize');
 }, false);
 
@@ -24,14 +27,9 @@ btn_minimize.addEventListener('click', function() {
 onload = function() {
 	document.getElementsByTagName('body')[0].className += ' ready';
 	
-	var webview = document.getElementById("messenger");
-	
-	webview.addEventListener('did-finish-load', function(e) {
-		webview.insertCSS('.app { border-radius: 0px!important; }');
-	});
-	
+	var webview = document.getElementById("messenger");	
 	webview.addEventListener('new-window', function(e) {
-		require('shell').openExternal(e.url);
+		shell.openExternal(e.url);
 	});
 }
 
