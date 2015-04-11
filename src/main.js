@@ -17,7 +17,6 @@ app.on('ready', function () {
     'web-preferences': {
       plugins: true
     },
-    'accept-first-mouse': true,
     title: 'Loading'
   });
 
