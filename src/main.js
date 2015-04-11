@@ -27,7 +27,7 @@ app.on('ready', function () {
 // API
 ipc.on('do-native-action', function(event, action) {
   switch (action) {
-    case 'quit':
+    case 'close':
       app.quit();
       break;
 
