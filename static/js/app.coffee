@@ -30,7 +30,7 @@ window.addEventListener 'focus', ->
 lastTitle = null
 setInterval ->
   title = webview.getTitle()
-  if title and title isnt lastTitle
+  if title and title isnt lastTitle and title.indexOf('http') isnt 0
     titleElement.innerHTML = title
 
     badgeResult = (/(?:\(([0-9])\) )?messenger/ig).exec(title)
