@@ -17,11 +17,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0</string>
+	<string>${VERSION}</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0</string>
+	<string>${VERSION}</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.social-networking</string>
 	<key>LSMinimumSystemVersion</key>
@@ -38,5 +38,7 @@
 	<string>speakeasy.pem</string>
 	<key>SUScheduledCheckInterval</key>
 	<string>3600</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2015, Marek Hrabe (https://github.com/marekhrabe/messenger)</string>
 </dict>
 </plist>

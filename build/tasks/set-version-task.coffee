@@ -4,43 +4,34 @@ path = require 'path'
 module.exports = (grunt) ->
   {spawn} = require('./task-helpers')(grunt)
 
-  getVersion = (callback) ->
-    {version} = require(path.join(grunt.config.get('atom.appDir'), 'package.json'))
-    callback(null, version)
-
   grunt.registerTask 'set-version', 'Set the version in the plist and package.json', ->
     done = @async()
+    appDir = grunt.config.get('atom.appDir')
+    {version} = require(path.join(appDir, 'package.json'))
 
-    getVersion (error, version) ->
-      if error?
-        done(error)
-        return
+    # Replace version field of package.json.
+    packageJsonPath = path.join(appDir, 'package.json')
+    packageJson = require(packageJsonPath)
+    packageJson.version = version
+    packageJsonString = JSON.stringify(packageJson)
+    fs.writeFileSync(packageJsonPath, packageJsonString)
 
-      appDir = grunt.config.get('atom.appDir')
+    if process.platform is 'darwin'
+      cmd = 'script/set-version'
+      args = [grunt.config.get('atom.buildDir'), version]
+      spawn {cmd, args}, (error, result, code) -> done(error)
+    else if process.platform is 'win32'
+      shellAppDir = grunt.config.get('atom.shellAppDir')
+      shellExePath = path.join(shellAppDir, 'messenger.exe')
 
-      # Replace version field of package.json.
-      packageJsonPath = path.join(appDir, 'package.json')
-      packageJson = require(packageJsonPath)
-      packageJson.version = version
-      packageJsonString = JSON.stringify(packageJson)
-      fs.writeFileSync(packageJsonPath, packageJsonString)
+      strings =
+        CompanyName: 'Marek Hrabě'
+        FileDescription: 'Messenger'
+        LegalCopyright: 'Copyright (C) 2015 Marek Hrabě. All rights reserved'
+        ProductName: 'Messenger'
+        ProductVersion: version
 
-      if process.platform is 'darwin'
-        cmd = 'script/set-version'
-        args = [grunt.config.get('atom.buildDir'), version]
-        spawn {cmd, args}, (error, result, code) -> done(error)
-      else if process.platform is 'win32'
-        shellAppDir = grunt.config.get('atom.shellAppDir')
-        shellExePath = path.join(shellAppDir, 'messenger.exe')
-
-        strings =
-          CompanyName: 'Marek Hrabě'
-          FileDescription: 'Messenger'
-          LegalCopyright: 'Copyright (C) 2015 Marek Hrabě. All rights reserved'
-          ProductName: 'Messenger'
-          ProductVersion: version
-
-        rcedit = require('rcedit')
-        rcedit(shellExePath, {'version-string': strings}, done)
-      else
-        done()
+      rcedit = require('rcedit')
+      rcedit(shellExePath, {'version-string': strings}, done)
+    else
+      done()
