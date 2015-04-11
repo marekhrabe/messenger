@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>Messenger</string>
+	<string>Atom</string>
 	<key>CFBundleIconFile</key>
 	<string>messenger.icns</string>
 	<key>CFBundleIdentifier</key>
