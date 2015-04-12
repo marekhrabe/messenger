@@ -3,6 +3,7 @@ var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
 var path = require('path');
 var AutoUpdateManager = require('./updates');
+var dialog = require('dialog');
 
 var staticPath = path.join(__dirname, '..', 'static');
 
@@ -41,5 +42,16 @@ ipc.on('do-native-action', function(event, action) {
 
 updater = new AutoUpdateManager(app.getVersion())
 updater.on('state-changed', function () {
-  console.log(updater.state)
+  if (updater.state === 'update-available') {
+    dialog.showMessageBox({
+      type: 'info',
+      buttons: ['Install and Relaunch', 'Not now'],
+      message: 'Messenger Update Available',
+      detail: "New version of Messenger is available and ready to be installed.",
+    }, function (result) {
+      if (result === 0) {
+        updater.install();
+      }
+    })
+  }
 })
