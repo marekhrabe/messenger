@@ -2,6 +2,7 @@ var app = require('app');
 var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
 var path = require('path');
+var AutoUpdateManager = require('./updates');
 
 var staticPath = path.join(__dirname, '..', 'static');
 
@@ -35,3 +36,10 @@ ipc.on('do-native-action', function(event, action) {
       break;
   }
 });
+
+// Auto updater
+
+updater = new AutoUpdateManager(app.getVersion())
+updater.on('state-changed', function () {
+  console.log(updater.state)
+})
