@@ -4,10 +4,12 @@ ipc = require 'ipc'
 shell = require 'shell'
 
 # Window buttons
-for action in ['close', 'minimize']
+addButtonListener = (action) ->
   document.querySelector("#btn-#{action}").addEventListener 'click', (e) ->
     e.preventDefault()
     ipc.send('do-native-action', action)
+
+addButtonListener(action) for action in ['close', 'minimize']
 
 # Show window UI
 document.body.classList.add('ready')
