@@ -8,7 +8,7 @@ MIT licensed, [Electron (formerly atom-shell)](https://github.com/atom/atom-shel
 
 # Download
 
-#### [Download Now for Mac](https://github.com/marekhrabe/messenger/releases)
+[<img src="https://upx.cz/23r" width="200" height="50">](https://github.com/marekhrabe/messenger/releases)
 
 # Desktop notifications
 
