@@ -10,6 +10,8 @@ MIT licensed, [Electron (formerly atom-shell)](https://github.com/atom/atom-shel
 
 [<img src="https://upx.cz/23r" width="200" height="50">](https://github.com/marekhrabe/messenger/releases)
 
+Requires OS X 10.8+
+
 # Desktop notifications
 
 Go to Settings in Messenger and turn them on. They should just work
